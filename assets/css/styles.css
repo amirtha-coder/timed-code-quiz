@@ -1,0 +1,67 @@
+:root {
+  /* CSS HEX */
+  --eggshell: #f4f1deff;
+  --terra-cotta: #e07a5fff;
+  --independence: #3d405bff;
+  --green-sheen: #81b29aff;
+  --deep-champagne: #f2cc8fff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+.body-container {
+  margin: 0;
+  line-height: 2;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+}
+
+.home:hover {
+  box-shadow: ;
+}
+
+.logo-img {
+  width: 6.4rem;
+  height: 6.4rem;
+  object-fit: contain;
+}
+.highscores {
+  text-decoration: none;
+  color: var(--green-sheen);
+  background-color: var(--independence);
+  border-radius: 40rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+.main {
+  flex-grow: 2;
+}
+footer {
+  display: flex;
+}
