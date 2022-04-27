@@ -27,7 +27,11 @@ html {
 .header {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 2;
+  background-color: var(--independence);
+  margin: 1vh;
 }
 
 .nav-container {
@@ -35,6 +39,7 @@ html {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--independence);
 }
 
 .home {
@@ -42,8 +47,9 @@ html {
   align-items: center;
 }
 
-.home:hover {
-  box-shadow: ;
+.home:hover,
+.highscores:hover {
+  background-color: var(--eggshell);
 }
 
 .logo-img {
@@ -53,15 +59,62 @@ html {
 }
 .highscores {
   text-decoration: none;
-  color: var(--green-sheen);
-  background-color: var(--independence);
+  color: var(--eggshell);
+  background-color: var(--green-sheen);
   border-radius: 40rem;
   padding: 1rem;
   margin: 1rem;
 }
+
+.timer {
+  color: var(--eggshell);
+  background-color: var(--terra-cotta);
+  display: flex;
+  flex-direction: row;
+}
+
 .main {
   flex-grow: 2;
 }
-footer {
+
+.h1 {
+  text-align: center;
+  color: var(---terra-cotta);
+  text-transform: capitalize;
+}
+
+.start-container {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-btn {
+  text-decoration-style: none;
+  background-color: var(--independence);
+  color: #ffffff;
+}
+
+.answer-options {
+  list-style: none;
+}
+
+.answer-option {
+  text-decoration-style: none;
+  background-color: var(--green-sheen);
+  margin: 1rem;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+}
+
+@media screen and (max-width: 576px) {
+  .header,
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
