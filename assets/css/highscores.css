@@ -1,0 +1,30 @@
+:root {
+  /* CSS HEX */
+  --eggshell: #f4f1deff;
+  --terra-cotta: #e07a5fff;
+  --independence: #3d405bff;
+  --green-sheen: #81b29aff;
+  --deep-champagne: #f2cc8fff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+.highscore-btn {
+  text-decoration-style: none;
+  background-color: var(--independence);
+  color: #ffffff;
+  padding: 2vh;
+  font-size: 2rem;
+}
+
+.highscore-btn:hover {
+  cursor: pointer;
+  background-color: var(--terra-cotta);
+}
