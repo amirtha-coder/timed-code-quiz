@@ -15,8 +15,11 @@
         </a>
         <a href="./highscores.html" class="highscores">highscores</a>
       </nav>
+      <section class="timer"id=timerSection>
+          <div id="timerDiv">Time:<span id="timer"> </span></div>
+        </section>
     </header>
-    <main class="main" id="main-container">
+    <main class="main" id="main">
       <section id="start-section">
         <h1 class="h1">Welcome to guess the coding acronym quiz</h1>
         <div class="start-container">
@@ -24,7 +27,7 @@
           <div class="start-item">
             <ul>
               <li>Answer all questions in the time limit.</li>
-              <li>If questions are wrong 10s is deducted.</li>
+              <li>If questions are wrong 5s is deducted.</li>
               <li>Your score is the time at which you finish.</li>
               <li>Save score with initials to view on leaderboard</li>
             </ul>
@@ -34,10 +37,7 @@
           </div>
         </div>
       </section>
-      <section>
-        <section class="timer">
-          <div>Time:<span id="timer"> </span></div>
-        </section>
+         <!-- <section id="answer-option-section">
         <h2>1. What does HTML stand for?</h2>
         <ul class="answer-options">
           <li class="answer-option">Hypertext Markup Language</li>
@@ -47,7 +47,7 @@
           <div></div>
         </ul>
       </section>
-      <section>
+      <section id="answer-option-section">
         <h2>2. What does CSS stand for?</h2>
         <ul class="answer-options">
           <li class="answer-option">Cascading Stylesheet</li>
@@ -57,7 +57,7 @@
           <div></div>
         </ul>
       </section>
-      <section>
+      <section id="answer-option-section">
         <h2>3. What does js stand for?</h2>
         <ul class="answer-options">
           <li class="answer-option">javascript</li>
@@ -67,7 +67,7 @@
         </ul>
         <div></div>
       </section>
-      <section>
+      <section id="answer-option-section">
         <h2>4. What does DOM stand for</h2>
         <ul class="answer-options">
           <li class="answer-option">Document Object Model</li>
@@ -77,7 +77,7 @@
         </ul>
         <div></div>
       </section>
-      <section>
+      <section id="answer-option-section">
         <h2>5. What does API stand for?</h2>
         <ul class="answer-options">
           <li class="answer-option">Application Programming Interface</li>
@@ -85,8 +85,11 @@
           <li class="answer-option">Application Pre Interface</li>
           <li class="answer-option">Application Programming Information</li>
         </ul>
-        <div></div>
-      </section>
+        <div id="rightwrong"></div>
+      </section> -->
+<section class="quiz-complete" id="quiz-complete">
+  <h2 class="gameover">Hooray! 🎉 you have completed the quiz</h2>
+</section>
       <section class="form-section">
         <form class="id">
           <div class="fill-name-input">Score =</div>

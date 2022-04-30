@@ -1,9 +1,69 @@
 // global declarations
-const questions = [];
+
+// target start button
+const startButton = document.getElementById("start-btn");
+
+// target start section
+const startSection = document.getElementById("start-section");
+
+// target main element
+const mainElement = document.getElementById("main");
+
 let questionIndex = 0;
+
+const questions = [
+  {
+    title: "1. What does HTML stand for?",
+    answer: [
+      "Hypertext Markup Language",
+      "Hypertag Markup Language",
+      "How to move a link",
+      "Hypercool text markup language",
+    ],
+    correctAnswer: "Hypertext Markup Language",
+  },
+  {
+    title: "2. What does CSS stand for?",
+    answer: [
+      "Cascading Stylesheet",
+      "Cool Styling Shines",
+      "Create Style Sheet",
+      "Cascading StyledSheets",
+    ],
+    correctAnswer: "Cascading Stylesheet",
+  },
+  {
+    title: "3. What does js stand for?",
+    answer: ["javascript", "jellosandwitch", "javascore", "jqueryscript"],
+    correctAnswer: "javascript",
+  },
+  {
+    title: "What does DOM stand for",
+    answer: [
+      "Document Object Model",
+      "Data Object model",
+      "Data Operation Model",
+      "Document Object Model",
+    ],
+    correctAnswer: "Document Object Model",
+  },
+  {
+    title: "5. What does API stand for?",
+    answer: [
+      "Application Programming Interface",
+      "Apparent Programming Interface",
+      "Application Pre Interface",
+      "Application Programming Information",
+    ],
+    correctAnswer: "Application Programming Interface",
+  },
+];
+
 // let timerValue = 10 * questions.length;
 let timerValue = 8;
 let quizComplete = false;
+const timerSpan = document.createElement("span");
+timerSpan.setAttribute("id", "timer");
 const timerElement = document.getElementById("timer");
 
 const onLoad = () => {
@@ -13,8 +73,6 @@ const onLoad = () => {
 };
 
 const removeStartSection = () => {
-  // target start section
-  const startSection = document.getElementById(start - section);
   console.log("remove start section");
   startSection.remove();
 };
@@ -38,10 +96,14 @@ const startTimer = () => {
   // setInterval of 1000ms (1s)
 };
 
-const validateAnswer = () => {
+const validateAnswer = (event) => {
   // get answer clicked from user
+  const target = event.target;
+  const currentTarget = event.currentTarget;
   // get the correct answer for question
+
   // compare the 2 answers
+
   // if incorrect subtract 5 seconds from timerValue
   // if incorrect render error alert with message and status
   // if correct render success alert with message and status
@@ -51,13 +113,14 @@ const validateAnswer = () => {
 };
 
 const handleFormSubmit = (event) => {
+  event.preventDefault();
   // get value from input
   const initials = document.getElementById("initials").value;
 
-  if (initials) {
-  } else {
-    // check if empty then render error alert with message and status
-  }
+  // if (initials) {
+  // } else {
+  //   // check if empty then render error alert with message and status
+  // }
 
   // if not empty then create the score object
   // {
@@ -69,11 +132,65 @@ const handleFormSubmit = (event) => {
 };
 
 const renderTimerSection = () => {
+  // const timerSection = document.createElement("section");
+  // timerSection.setAttribute("class", "timer");
+  // const timerDiv = document.createElement("div");
+  // timerDiv.textContent("Time:");
+  // timerDiv.append("timerspan");
+  // timerSection.append("timerDiv");
+  // mainElement.append("section");
+  // console.log("Welldone");
   // use HTML as guide and build in JS
   // append section to main
 };
 
 const renderQuestionSection = () => {
+  const currentQuestion = questions[questionIndex];
+
+  // create section
+  const section = document.createElement("section");
+  section.setAttribute("id", "answer-option-section");
+  section.setAttribute("data-answer", currentQuestion.correctAnswer);
+
+  // create h2
+  const h2 = document.createElement("h2");
+  h2.textContent = currentQuestion.title;
+
+  // create ul
+  const ul = document.createElement("ul");
+  ul.setAttribute("class", "answer-options");
+  console.log(ul.setAttribute);
+
+  // TODO: loop over options to create and append li to ul
+  const li1 = document.createElement("li");
+  li1.setAttribute("class", "answer-option");
+  li1.textContent = currentQuestion.answer[0];
+  console.log(currentQuestion.answer);
+
+  const li2 = document.createElement("li");
+  li2.setAttribute("class", "answer-option");
+  li2.textContent = currentQuestion.answer[1];
+
+  const li3 = document.createElement("li");
+  li3.setAttribute("class", "answer-option");
+  li3.textContent = currentQuestion.answer[2];
+
+  const li4 = document.createElement("li");
+  li4.setAttribute("class", "answer-option");
+  li4.textContent = currentQuestion.answer[3];
+
+  console.log("please work");
+  ul.append(li1, li2, li3, li4);
+
+  // append h2 and ul to section
+  section.append(h2, ul);
+
+  // append question section to main element
+  mainElement.append(section);
+
+  // add event listener on question section
+  section.addEventListener("click", handleOptionClick);
+
   // use HTML as guide and build in JS
   // append section to main
   // add click event listener on #question-section
@@ -102,7 +219,11 @@ const renderQuizCompleteSection = () => {
 
 const startQuiz = () => {
   console.log("startQuiz");
+
+  removeStartSection();
   // remove start section
+
+  renderQuestionSection();
 
   // start timer
   startTimer();
@@ -113,6 +234,6 @@ const startQuiz = () => {
 
 // add event listeners
 document.getElementById("start-btn").addEventListener("click", startQuiz);
-window.onload().addEventListener();
+// window.onload().addEventListener();
 // add document on load event listener
 // add start button click event listener

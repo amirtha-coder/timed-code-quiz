@@ -16,15 +16,82 @@ html {
   font-size: 10px;
 }
 
+.body-container {
+  margin: 0;
+  line-height: 2;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--independence);
+  margin: 1vh;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--independence);
+}
+
+.home {
+  display: flex;
+  align-items: center;
+}
+
+.home:hover {
+  background-color: var(--eggshell);
+}
+
+.highscores:hover {
+  background-color: var(--eggshell);
+  color: var(--independence);
+}
+
+.logo-img {
+  width: 6.4rem;
+  height: 6.4rem;
+  object-fit: contain;
+}
+
+.highscores {
+  text-decoration: none;
+  color: var(--eggshell);
+  background-color: var(--green-sheen);
+  border-radius: 40rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
 .highscore-btn {
   text-decoration-style: none;
   background-color: var(--independence);
   color: #ffffff;
-  padding: 2vh;
-  font-size: 2rem;
+  padding: 0.5vh;
+  font-size: 1rem;
 }
-
 .highscore-btn:hover {
   cursor: pointer;
-  background-color: var(--terra-cotta);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+.githubicon {
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+}
+
+.link-text {
+  text-decoration: none;
+  color: var(--independence);
 }

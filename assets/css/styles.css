@@ -24,12 +24,12 @@ html {
   flex-direction: column;
   height: 100vh;
 }
+
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 2;
   background-color: var(--independence);
   margin: 1vh;
 }
