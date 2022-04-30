@@ -8,80 +8,103 @@
     <title>Code Quiz</title>
   </head>
   <body class="body-container">
-    <header class="header"> 
+    <header class="header">
       <nav class="nav-container">
         <a href="./index.html" class="home">
           <img src="./assets/images/logo.png" alt="quiz" class="logo-img" />
         </a>
         <a href="./highscores.html" class="highscores">highscores</a>
       </nav>
-      </div>
-      <div class="timer">
-        <div>Time:<span id="timer"> </span></div>
-      </div>
     </header>
     <main class="main" id="main-container">
-      <div>
+      <section id="start-section">
         <h1 class="h1">Welcome to guess the coding acronym quiz</h1>
         <div class="start-container">
-          <h3 class> rules of game</p>
-           <ol>
-             <li>Answer all questions in the time limit. </li>
-             <li>If questions are wrong 10s is deducted.</li>
-             <li>Your score is the time which you have left.</li>
-             <li>Save scores to view on leaderboard.</li>
-            </ol> 
+          <h2>Rules of the game</h2>
+          <div class="start-item">
+            <ul>
+              <li>Answer all questions in the time limit.</li>
+              <li>If questions are wrong 10s is deducted.</li>
+              <li>Your score is the time at which you finish.</li>
+              <li>Save score with initials to view on leaderboard</li>
+            </ul>
           </div>
-      </div>     
-  <div>
-      <h3>1. What does HTML stand for?</h3>
-      <ul class="answer-options">
-      <li class="answer-option">Hypertext Markup Language</li>
-      <li class="answer-option">Hypertag Markup Language</li>
-      <li class="answer-option">How to move a link </li>
-      <li class="answer-option">Hypercool text markup language </li>
-      </ul>
-</div>
-<div>
-      <h3>2. What does CSS stand for?</h3>
-      <ul class="answer-options">
-      <li class="answer-option"> Cascading Stylesheet </li>
-      <li class="answer-option">Cool Styling Shines</li>
-      <li class="answer-option"> Create Style Sheet</li>
-      <li class="answer-option"> Cascading StyledSheets</li>
-      </ul>
-</div>
-<div>
-      <h3>3. What does js stand for? </h3>
-      <ul class="answer-options">
-      <li class="answer-option"> javascript </li>
-      <li class="answer-option">jellosandwitch </li>
-      <li class="answer-option"> javascore</li>
-      <li class="answer-option">jqueryscript</li>
-      </ul>
-</div>
-<div>
-      <h3>4. What does DOM stand for </h3>
-      <ul class="answer-options">
-      <li class="answer-option">Document Object Model </li>
-      <li class="answer-option">Data Object model</li>
-      <li class="answer-option"> Data Operation Model </li>
-      <li class="answer-option">Document Object Model </li>
-      </ul>
-</div>
-<div>
-      <h3>
-        5. What does API stand for?
-      </h3>
-      <ul class="answer-options">
-      <li class="answer-option">Application Programming Interface</li>
-      <li class="answer-option">Apparent Programming Interface </li>
-      <li class="answer-option">Application Pre Interface</li>
-      <li class="answer-option">Application Programming Information </li>
-      </ul>
-    </div>
+          <div class="start-btn-container">
+            <button class="start-btn" id="start-btn">Click to Start</button>
+          </div>
+        </div>
+      </section>
+      <section>
+        <section class="timer">
+          <div>Time:<span id="timer"> </span></div>
+        </section>
+        <h2>1. What does HTML stand for?</h2>
+        <ul class="answer-options">
+          <li class="answer-option">Hypertext Markup Language</li>
+          <li class="answer-option">Hypertag Markup Language</li>
+          <li class="answer-option">How to move a link</li>
+          <li class="answer-option">Hypercool text markup language</li>
+          <div></div>
+        </ul>
+      </section>
+      <section>
+        <h2>2. What does CSS stand for?</h2>
+        <ul class="answer-options">
+          <li class="answer-option">Cascading Stylesheet</li>
+          <li class="answer-option">Cool Styling Shines</li>
+          <li class="answer-option">Create Style Sheet</li>
+          <li class="answer-option">Cascading StyledSheets</li>
+          <div></div>
+        </ul>
+      </section>
+      <section>
+        <h2>3. What does js stand for?</h2>
+        <ul class="answer-options">
+          <li class="answer-option">javascript</li>
+          <li class="answer-option">jellosandwitch</li>
+          <li class="answer-option">javascore</li>
+          <li class="answer-option">jqueryscript</li>
+        </ul>
+        <div></div>
+      </section>
+      <section>
+        <h2>4. What does DOM stand for</h2>
+        <ul class="answer-options">
+          <li class="answer-option">Document Object Model</li>
+          <li class="answer-option">Data Object model</li>
+          <li class="answer-option">Data Operation Model</li>
+          <li class="answer-option">Document Object Model</li>
+        </ul>
+        <div></div>
+      </section>
+      <section>
+        <h2>5. What does API stand for?</h2>
+        <ul class="answer-options">
+          <li class="answer-option">Application Programming Interface</li>
+          <li class="answer-option">Apparent Programming Interface</li>
+          <li class="answer-option">Application Pre Interface</li>
+          <li class="answer-option">Application Programming Information</li>
+        </ul>
+        <div></div>
+      </section>
+      <section class="form-section">
+        <form class="id">
+          <div class="fill-name-input">Score =</div>
+          <label for="initals"> Your initials: </label>
+          <input
+            type="text"
+            id="initials"
+            name="initial"
+            placeholder="type here"
+          />
+          <div><button class=submit-btn id=submit-btn type="submit">Submit</button></div>
+          <div></div>
+        </form>
+      </section>
     </main>
     <footer class="footer">
+      <h4>&copy amirtha-coder</h4>
+      <a class="link-text" href=https://github.com/amirtha-coder a target=”_blank”> Click to visit github pages<img class="githubicon" src="./assets/images/githubicon.png" ></a>
       <script src="./assets/js/index.js"></script>
     </footer>
   </body>

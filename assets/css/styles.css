@@ -84,15 +84,28 @@ html {
 
 .h1 {
   text-align: center;
-  color: var(---terra-cotta);
   text-transform: capitalize;
 }
 
+.start-btn-container,
 .start-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.start-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-container ul {
+  padding-left: 0;
+}
+.start-container li {
+  text-align: center;
+  list-style: none;
 }
 
 .start-btn {
@@ -119,17 +132,34 @@ html {
   margin: 1rem;
   width: fit-content;
   text-align: center;
-  border: solid 1px var(--independence);
   border-radius: 0.4rem;
   padding: 0.5rem;
 }
 
-.answer-option:hover {
-  cursor:pointer;
+.answer-option:hover,
+.submit-btn:hover {
+  cursor: pointer;
+}
+
+.submit-btn {
+  text-decoration: none;
+  background-color: var(--independence);
+  color: white;
 }
 
 .footer {
   display: flex;
+  flex-direction: column;
+}
+.githubicon {
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+}
+
+.link-text {
+  text-decoration: none;
+  color: var(--independence);
 }
 
 @media screen and (max-width: 576px) {

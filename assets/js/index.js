@@ -12,7 +12,12 @@ const onLoad = () => {
   // if false then set highscores to empty array in LS
 };
 
-const removeStartSection = () => {};
+const removeStartSection = () => {
+  // target start section
+  const startSection = document.getElementById(start - section);
+  console.log("remove start section");
+  startSection.remove();
+};
 
 const startTimer = () => {
   timerElement.textContent = timerValue;
@@ -45,9 +50,15 @@ const validateAnswer = () => {
   // if question is not last question then increment question index and render next question
 };
 
-const handleFormSubmit = () => {
+const handleFormSubmit = (event) => {
   // get value from input
-  // check if empty then render error alert with message and status
+  const initials = document.getElementById("initials").value;
+
+  if (initials) {
+  } else {
+    // check if empty then render error alert with message and status
+  }
+
   // if not empty then create the score object
   // {
   //   fullName: "Bob Smith",
@@ -92,6 +103,7 @@ const renderQuizCompleteSection = () => {
 const startQuiz = () => {
   console.log("startQuiz");
   // remove start section
+
   // start timer
   startTimer();
 
@@ -101,6 +113,6 @@ const startQuiz = () => {
 
 // add event listeners
 document.getElementById("start-btn").addEventListener("click", startQuiz);
-
+window.onload().addEventListener();
 // add document on load event listener
 // add start button click event listener
