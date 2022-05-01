@@ -62,8 +62,6 @@ const questions = [
 // let timerValue = 10 * questions.length;
 let timerValue = 8;
 let quizComplete = false;
-const timerSpan = document.createElement("span");
-timerSpan.setAttribute("id", "timer");
 const timerElement = document.getElementById("timer");
 
 const onLoad = () => {
@@ -146,51 +144,39 @@ const renderTimerSection = () => {
 
 const renderQuestionSection = () => {
   const currentQuestion = questions[questionIndex];
-
   // create section
   const section = document.createElement("section");
   section.setAttribute("id", "answer-option-section");
   section.setAttribute("data-answer", currentQuestion.correctAnswer);
-
   // create h2
   const h2 = document.createElement("h2");
   h2.textContent = currentQuestion.title;
-
   // create ul
   const ul = document.createElement("ul");
   ul.setAttribute("class", "answer-options");
   console.log(ul.setAttribute);
-
   // TODO: loop over options to create and append li to ul
   const li1 = document.createElement("li");
   li1.setAttribute("class", "answer-option");
   li1.textContent = currentQuestion.answer[0];
   console.log(currentQuestion.answer);
-
   const li2 = document.createElement("li");
   li2.setAttribute("class", "answer-option");
   li2.textContent = currentQuestion.answer[1];
-
   const li3 = document.createElement("li");
   li3.setAttribute("class", "answer-option");
   li3.textContent = currentQuestion.answer[2];
-
   const li4 = document.createElement("li");
   li4.setAttribute("class", "answer-option");
   li4.textContent = currentQuestion.answer[3];
-
   console.log("please work");
   ul.append(li1, li2, li3, li4);
-
   // append h2 and ul to section
   section.append(h2, ul);
-
   // append question section to main element
   mainElement.append(section);
-
   // add event listener on question section
-  section.addEventListener("click", handleOptionClick);
-
+  section.addEventListener("click", validateAnswer);
   // use HTML as guide and build in JS
   // append section to main
   // add click event listener on #question-section
@@ -203,11 +189,56 @@ const renderGameOver = () => {
 
 const renderAlert = (message, status) => {
   // use HTML as guide and build in JS
+  const alert = document.createElement("div");
+  section.append("alert");
   // append div to #question-section
 };
 
 const renderForm = () => {
   // use HTML as guide and build in JS
+  //create section
+  const sectionForm = document.createElement("section");
+  sectionForm.setAttribute("class", "form-section");
+  // create form
+  const form = document.createElement("form");
+  // create div
+  const formDiv1 = document.createElement("div");
+  formDiv1.setAttribute("class", "fill-name-input");
+  formDiv1.textContent = "Score =";
+  form.append(formDiv1);
+
+  //create label
+  const label = document.createElement("label");
+  label.textContent = "Your initials:";
+
+  // create input
+  const input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("id", "initials");
+  input.setAttribute("name", "initial");
+  input.setAttribute("placeholder", "type here");
+
+  // create div
+  const buttonDiv = document.createElement("div");
+  // create btn
+  const button = document.createElement("button");
+  button.setAttribute("class", "submitbtn");
+  button.setAttribute("id", "submit-btn");
+  button.setAttribute("type", "submit");
+  button.textContent = "Submit";
+
+  // // create div
+  // const alertDiv = document.createElement("div");
+  form.append(label);
+  form.append(input);
+  buttonDiv.append(button);
+  form.append(buttonDiv);
+  sectionForm.append(form);
+  mainElement.append(sectionForm);
+
+  console.log(formDiv1);
+
+  button.addEventListener("click", handleFormSubmit);
   // append section to main
   // add submit event handler to form
 };
@@ -220,13 +251,14 @@ const renderQuizCompleteSection = () => {
 const startQuiz = () => {
   console.log("startQuiz");
 
+  startTimer();
+
   removeStartSection();
   // remove start section
 
   renderQuestionSection();
 
   // start timer
-  startTimer();
 
   // render timer section
   // render question section

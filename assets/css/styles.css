@@ -137,16 +137,17 @@ html {
 }
 
 .answer-option:hover,
-.submit-btn:hover {
+.submitbtn:hover {
   cursor: pointer;
 }
 
-.submit-btn {
-  text-decoration: none;
+.submitbtn {
+  text-decoration-style: none;
   background-color: var(--independence);
-  color: white;
+  color: #ffffff;
+  padding: 0.5vh;
+  font-size: 1.4rem;
 }
-
 .footer {
   display: flex;
   flex-direction: column;
