@@ -8,6 +8,7 @@ document
   .addEventListener("click", clearLeaderBoard);
 
 // add event listener
-const clearLeaderBoard = () => {};
-// clear on local storage
-localStorage.getItem("highScores").clear();
+const clearLeaderBoard = () => {
+  // clear on local storage
+  return localStorage.getItem("highScores").clear();
+};

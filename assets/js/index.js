@@ -98,7 +98,7 @@ const startTimer = () => {
       quizComplete == true ||
       questionIndex >= questions.length
     ) {
-      // removeQuestionSection();
+      removeQuestionSection();
       renderForm();
       clearInterval(timer);
       console.log("time working");
@@ -113,12 +113,10 @@ const startTimer = () => {
 };
 
 const onLoad = () => {
-  const dataFromLS = localStorage.getItem("highScores");
+  const dataFromLS = JSON.parse(localStorage.getItem("highScores"));
 
-  if (dataFromLS) {
-    return JSON.parse(highScores);
-  } else {
-    return [];
+  if (!dataFromLS) {
+    localStorage.setItem("highScores", JSON.stringify([]));
   }
   // initialise local storage
 
@@ -172,18 +170,21 @@ const validateAnswer = (event) => {
 };
 
 const handleFormSubmit = (event) => {
+  console.log("form button");
   event.preventDefault();
 
   // get value from input
   const initials = document.getElementById("initials").value;
 
   if (initials) {
-    const highScores = {
+    const highScore = {
       initials,
-      score,
+      score: timerValue,
     };
+    const highScores = JSON.parse(localStorage.getItem("highScores"));
+    highScores.push(highScore);
 
-    localStorage.setItem("itemStored", JSON.stringify(highScores));
+    localStorage.setItem("highScores", JSON.stringify(highScores));
   } else {
     alert("please write your initials to view high score");
     // check if empty then render error alert with message and status
@@ -277,8 +278,12 @@ const renderForm = () => {
   // use HTML as guide and build in JS
   console.log("form");
   //create section
+  if (document.getElementById("form-section")) {
+    return;
+  }
   const sectionForm = document.createElement("section");
   sectionForm.setAttribute("class", "form-section");
+  sectionForm.setAttribute("id", "form-section");
   // header
   const quizCompleteHeader = document.createElement("h2");
   quizCompleteHeader.setAttribute("class", "gameover");
@@ -349,6 +354,6 @@ const startQuiz = () => {
 
 // add event listeners
 document.getElementById("start-btn").addEventListener("click", startQuiz);
-// window.onload().addEventListener();
+window.onload = onLoad();
 // add document on load event listener
 // add start button click event listener
