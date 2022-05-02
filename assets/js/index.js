@@ -9,10 +9,12 @@ const startSection = document.getElementById("start-section");
 // target main element
 const mainElement = document.getElementById("main");
 
+// target the timer section
 const timerSection = document.getElementById("timerSection");
 
 let questionIndex = 0;
 
+// object array questions
 const questions = [
   {
     title: "1. What does HTML stand for?",
@@ -45,7 +47,7 @@ const questions = [
       "Document Object Model",
       "Data Object model",
       "Data Operation Model",
-      "Document Object Model",
+      "Document Objects Model",
     ],
     correctAnswer: "Document Object Model",
   },
@@ -60,22 +62,30 @@ const questions = [
     correctAnswer: "Application Programming Interface",
   },
 ];
+// const renderTimerSection = () => {
+//   const timerSection = document.createElement("section");
+//   timerSection.setAttribute("class", "timer");
+//   timerSection.setAttribute("id", "timerSection");
 
+//   const timerDiv = document.createElement("div");
+//   timerDiv.textContent = "Time:";
+//   timerDiv.setAttribute("id", "timerDiv");
+//   timerSection.append(timerDiv);
+
+//   const timer = document.createElement("span");
+//   timer.getAttribute("id", "timer");
+//   timerDiv.append(timer);
+//   timerSection.append(timerDiv);
+
+//   mainElement.append(timerSection);
+//   console.log("Welldone");
+//   // use HTML as guide and build in JS
+//   // append section to main
+// };
 let timerValue = 10 * questions.length;
 // let timerValue = 8;
 let quizComplete = false;
 const timerElement = document.getElementById("timer");
-
-const onLoad = () => {
-  // initialise local storage
-  // check if highscores exists in LS
-  // if false then set highscores to empty array in LS
-};
-
-const removeStartSection = () => {
-  console.log("remove start section");
-  startSection.remove();
-};
 
 const startTimer = () => {
   timerElement.textContent = timerValue;
@@ -83,20 +93,42 @@ const startTimer = () => {
   const countdown = () => {
     timerValue -= 1;
     timerElement.textContent = timerValue;
-    if (timerValue === 0 || quizComplete) {
-      removeQuestionSection();
+    if (
+      timerValue === 0 ||
+      quizComplete == true ||
+      questionIndex >= questions.length
+    ) {
+      // removeQuestionSection();
       renderForm();
-      renderQuizCompleteSection();
       clearInterval(timer);
+      console.log("time working");
     }
     // decrement timer value
     // if quizComplete is true then stop timer
-
     // check if timer reaches 0
     // if true render game over
   };
   const timer = setInterval(countdown, 1000);
   // setInterval of 1000ms (1s)
+};
+
+const onLoad = () => {
+  const dataFromLS = localStorage.getItem("highScores");
+
+  if (dataFromLS) {
+    return JSON.parse(highScores);
+  } else {
+    return [];
+  }
+  // initialise local storage
+
+  // check if highscores exists in LS
+  // if false then set highscores to empty array in LS
+};
+
+const removeStartSection = () => {
+  console.log("remove start section");
+  startSection.remove();
 };
 
 const validateAnswer = (event) => {
@@ -107,41 +139,37 @@ const validateAnswer = (event) => {
 
   console.log(currentTarget);
 
+  // get the correct answer for question
   if (target.tagName === "LI") {
     const value = target.getAttribute("data-option");
     console.log(value);
 
+    // compare the 2 answers
     if (value !== currentTarget) {
+      // if incorrect subtract 5 seconds from timerValue
       timerValue = timerValue - 5;
-      myTimeout = setTimeout(renderAlert(), 500);
-      console.log("working");
+      renderAlert();
+      // if incorrect render error alert with message and status
+      // set timeout for 500ms and then go to next question
+      myTimeout = setTimeout(5000);
+      console.log("incorrect answer");
     } else {
       if (questionIndex < questions.length - 1) {
+        // if question is not last question then increment question index and render next question
         removeQuestionSection();
         questionIndex += 1;
         renderQuestionSection();
-        alert.remove;
+        document.getElementById("alert").remove();
         setTimeout(5000);
       } else {
+        // if question is last question set quizComplete to true and then render form
         quizComplete === true;
         removeQuestionSection();
         renderForm();
-        renderQuizCompleteSection();
       }
     }
   }
 };
-
-// get the correct answer for question
-
-// compare the 2 answers
-
-// if incorrect subtract 5 seconds from timerValue
-// if incorrect render error alert with message and status
-// if correct render success alert with message and status
-// set timeout for 500ms and then go to next question
-// if question is last question set quizComplete to true and then render form
-// if question is not last question then increment question index and render next question
 
 const handleFormSubmit = (event) => {
   event.preventDefault();
@@ -154,6 +182,7 @@ const handleFormSubmit = (event) => {
       initials,
       score,
     };
+
     localStorage.setItem("itemStored", JSON.stringify(highScores));
   } else {
     alert("please write your initials to view high score");
@@ -169,18 +198,10 @@ const handleFormSubmit = (event) => {
   // render quizCompleteSection
 };
 
-const renderTimerSection = () => {
-  // const timerSection = document.createElement("section");
-  // timerSection.setAttribute("class", "timer");
-  // const timerDiv = document.createElement("div");
-  // timerDiv.textContent("Time:");
-  // timerDiv.append("timerspan");
-  // timerSection.append("timerDiv");
-  // mainElement.append("section");
-  // console.log("Welldone");
-  // use HTML as guide and build in JS
-  // append section to main
-};
+// const renderQuizCompleteSection = () => {
+//   // use HTML as guide and build in JS
+//   // append section to main
+// };
 
 const renderQuestionSection = () => {
   const currentQuestion = questions[questionIndex];
@@ -230,14 +251,17 @@ const renderQuestionSection = () => {
   // add click event listener on #question-section
 };
 
-const renderGameOver = () => {
-  timerSection.remove();
-  removeQuestionSection();
-  const gameOverSection = createElement("section");
-  mainElement.append(gameOverSection);
-  // use HTML as guide and build in JS
-  // append section to main
-};
+// const renderGameOver = () => {
+//   timerSection.remove();
+//   // removeQuestionSection();
+//   const gameOverSection = createElement("section");
+//   const formDiv1 = document.createElement("div");
+//   formDiv1.setAttribute("class", "fill-name-input");
+//   formDiv1.textContent = "Score = ";
+//   gameOverSection.append(formDiv1);
+//   mainElement.append(gameOverSection);
+//   // use HTML as guide and build in JS
+//   // append section to main
 
 const renderAlert = () => {
   // use HTML as guide and build in JS
@@ -245,22 +269,31 @@ const renderAlert = () => {
   document.getElementById("answer-option-section").append(alert);
   alert.textContent = "Sorry, wrong answer!";
   alert.setAttribute("class", "alert");
-
+  alert.setAttribute("id", "alert");
   // append div to #question-section
 };
 
 const renderForm = () => {
   // use HTML as guide and build in JS
+  console.log("form");
   //create section
   const sectionForm = document.createElement("section");
   sectionForm.setAttribute("class", "form-section");
+  // header
+  const quizCompleteHeader = document.createElement("h2");
+  quizCompleteHeader.setAttribute("class", "gameover");
+  quizCompleteHeader.textContent = "Hooray! 🎉 you have completed the quiz";
+  sectionForm.append(quizCompleteHeader);
   // create form
   const form = document.createElement("form");
-  // create div
+
   const formDiv1 = document.createElement("div");
   formDiv1.setAttribute("class", "fill-name-input");
-  formDiv1.textContent = "Score =";
+  const score = timerValue;
+  formDiv1.textContent = "Score = " + score;
   form.append(formDiv1);
+  timerValue === 0;
+  timerSection.remove();
 
   //create label
   const label = document.createElement("label");
@@ -291,34 +324,26 @@ const renderForm = () => {
   sectionForm.append(form);
   mainElement.append(sectionForm);
 
-  console.log(formDiv1);
-
   button.addEventListener("click", handleFormSubmit);
   // append section to main
   // add submit event handler to form
 };
+
 const removeQuestionSection = () => {
   document.getElementById("answer-option-section").remove();
 };
 
-const renderQuizCompleteSection = () => {
-  // use HTML as guide and build in JS
-  // append section to main
-};
-
 const startQuiz = () => {
   console.log("startQuiz");
-
+  // start timer
   startTimer();
 
   removeStartSection();
   // remove start section
+  // renderTimerSection();
+  // render timer section
 
   renderQuestionSection();
-
-  // start timer
-
-  // render timer section
   // render question section
 };
 
