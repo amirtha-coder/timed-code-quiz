@@ -9,6 +9,8 @@ const startSection = document.getElementById("start-section");
 // target main element
 const mainElement = document.getElementById("main");
 
+const timerSection = document.getElementById("timerSection");
+
 let questionIndex = 0;
 
 const questions = [
@@ -59,8 +61,8 @@ const questions = [
   },
 ];
 
-// let timerValue = 10 * questions.length;
-let timerValue = 8;
+let timerValue = 10 * questions.length;
+// let timerValue = 8;
 let quizComplete = false;
 const timerElement = document.getElementById("timer");
 
@@ -82,6 +84,9 @@ const startTimer = () => {
     timerValue -= 1;
     timerElement.textContent = timerValue;
     if (timerValue === 0 || quizComplete) {
+      removeQuestionSection();
+      renderForm();
+      renderQuizCompleteSection();
       clearInterval(timer);
     }
     // decrement timer value
@@ -96,29 +101,64 @@ const startTimer = () => {
 
 const validateAnswer = (event) => {
   // get answer clicked from user
+  const currentQuestion = questions[questionIndex];
   const target = event.target;
-  const currentTarget = event.currentTarget;
-  // get the correct answer for question
+  const currentTarget = (event.currentTarget = currentQuestion.correctAnswer);
 
-  // compare the 2 answers
+  console.log(currentTarget);
 
-  // if incorrect subtract 5 seconds from timerValue
-  // if incorrect render error alert with message and status
-  // if correct render success alert with message and status
-  // set timeout for 500ms and then go to next question
-  // if question is last question set quizComplete to true and then render form
-  // if question is not last question then increment question index and render next question
+  if (target.tagName === "LI") {
+    const value = target.getAttribute("data-option");
+    console.log(value);
+
+    if (value !== currentTarget) {
+      timerValue = timerValue - 5;
+      myTimeout = setTimeout(renderAlert(), 500);
+      console.log("working");
+    } else {
+      if (questionIndex < questions.length - 1) {
+        removeQuestionSection();
+        questionIndex += 1;
+        renderQuestionSection();
+        alert.remove;
+        setTimeout(5000);
+      } else {
+        quizComplete === true;
+        removeQuestionSection();
+        renderForm();
+        renderQuizCompleteSection();
+      }
+    }
+  }
 };
+
+// get the correct answer for question
+
+// compare the 2 answers
+
+// if incorrect subtract 5 seconds from timerValue
+// if incorrect render error alert with message and status
+// if correct render success alert with message and status
+// set timeout for 500ms and then go to next question
+// if question is last question set quizComplete to true and then render form
+// if question is not last question then increment question index and render next question
 
 const handleFormSubmit = (event) => {
   event.preventDefault();
+
   // get value from input
   const initials = document.getElementById("initials").value;
 
-  // if (initials) {
-  // } else {
-  //   // check if empty then render error alert with message and status
-  // }
+  if (initials) {
+    const highScores = {
+      initials,
+      score,
+    };
+    localStorage.setItem("itemStored", JSON.stringify(highScores));
+  } else {
+    alert("please write your initials to view high score");
+    // check if empty then render error alert with message and status
+  }
 
   // if not empty then create the score object
   // {
@@ -155,21 +195,29 @@ const renderQuestionSection = () => {
   const ul = document.createElement("ul");
   ul.setAttribute("class", "answer-options");
   console.log(ul.setAttribute);
-  // TODO: loop over options to create and append li to ul
+
   const li1 = document.createElement("li");
   li1.setAttribute("class", "answer-option");
+  li1.setAttribute("data-option", currentQuestion.answer[0]);
   li1.textContent = currentQuestion.answer[0];
   console.log(currentQuestion.answer);
+
   const li2 = document.createElement("li");
   li2.setAttribute("class", "answer-option");
+  li2.setAttribute("data-option", currentQuestion.answer[1]);
   li2.textContent = currentQuestion.answer[1];
+
   const li3 = document.createElement("li");
   li3.setAttribute("class", "answer-option");
+  li3.setAttribute("data-option", currentQuestion.answer[2]);
   li3.textContent = currentQuestion.answer[2];
+
   const li4 = document.createElement("li");
   li4.setAttribute("class", "answer-option");
+  li4.setAttribute("data-option", currentQuestion.answer[3]);
   li4.textContent = currentQuestion.answer[3];
   console.log("please work");
+
   ul.append(li1, li2, li3, li4);
   // append h2 and ul to section
   section.append(h2, ul);
@@ -183,14 +231,21 @@ const renderQuestionSection = () => {
 };
 
 const renderGameOver = () => {
+  timerSection.remove();
+  removeQuestionSection();
+  const gameOverSection = createElement("section");
+  mainElement.append(gameOverSection);
   // use HTML as guide and build in JS
   // append section to main
 };
 
-const renderAlert = (message, status) => {
+const renderAlert = () => {
   // use HTML as guide and build in JS
   const alert = document.createElement("div");
-  section.append("alert");
+  document.getElementById("answer-option-section").append(alert);
+  alert.textContent = "Sorry, wrong answer!";
+  alert.setAttribute("class", "alert");
+
   // append div to #question-section
 };
 
@@ -241,6 +296,9 @@ const renderForm = () => {
   button.addEventListener("click", handleFormSubmit);
   // append section to main
   // add submit event handler to form
+};
+const removeQuestionSection = () => {
+  document.getElementById("answer-option-section").remove();
 };
 
 const renderQuizCompleteSection = () => {

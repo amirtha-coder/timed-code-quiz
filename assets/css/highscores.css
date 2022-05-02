@@ -31,6 +31,7 @@ html {
   align-items: center;
   background-color: var(--independence);
   margin: 1vh;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 1.5);
 }
 
 .nav-container {
@@ -84,6 +85,8 @@ html {
 .footer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .githubicon {
   width: 5rem;
