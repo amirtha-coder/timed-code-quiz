@@ -62,28 +62,8 @@ const questions = [
     correctAnswer: "Application Programming Interface",
   },
 ];
-// const renderTimerSection = () => {
-//   const timerSection = document.createElement("section");
-//   timerSection.setAttribute("class", "timer");
-//   timerSection.setAttribute("id", "timerSection");
 
-//   const timerDiv = document.createElement("div");
-//   timerDiv.textContent = "Time:";
-//   timerDiv.setAttribute("id", "timerDiv");
-//   timerSection.append(timerDiv);
-
-//   const timer = document.createElement("span");
-//   timer.getAttribute("id", "timer");
-//   timerDiv.append(timer);
-//   timerSection.append(timerDiv);
-
-//   mainElement.append(timerSection);
-//   console.log("Welldone");
-//   // use HTML as guide and build in JS
-//   // append section to main
-// };
 let timerValue = 10 * questions.length;
-// let timerValue = 8;
 let quizComplete = false;
 const timerElement = document.getElementById("timer");
 
@@ -113,15 +93,13 @@ const startTimer = () => {
 };
 
 const onLoad = () => {
+  // initialise local storage
   const dataFromLS = JSON.parse(localStorage.getItem("highScores"));
-
+  // check if highscores exists in LS
+  // if false then set highscores to empty array in LS
   if (!dataFromLS) {
     localStorage.setItem("highScores", JSON.stringify([]));
   }
-  // initialise local storage
-
-  // check if highscores exists in LS
-  // if false then set highscores to empty array in LS
 };
 
 const removeStartSection = () => {
@@ -176,33 +154,23 @@ const handleFormSubmit = (event) => {
   // get value from input
   const initials = document.getElementById("initials").value;
 
+  // high score object that will be pushed into array
   if (initials) {
     const highScore = {
       initials,
       score: timerValue,
     };
+    // push score object to LS
     const highScores = JSON.parse(localStorage.getItem("highScores"));
     highScores.push(highScore);
 
     localStorage.setItem("highScores", JSON.stringify(highScores));
+    alert("click highscores button to view leaderboard");
   } else {
     alert("please write your initials to view high score");
     // check if empty then render error alert with message and status
   }
-
-  // if not empty then create the score object
-  // {
-  //   fullName: "Bob Smith",
-  //   score: 25
-  // }
-  // push score object to LS
-  // render quizCompleteSection
 };
-
-// const renderQuizCompleteSection = () => {
-//   // use HTML as guide and build in JS
-//   // append section to main
-// };
 
 const renderQuestionSection = () => {
   const currentQuestion = questions[questionIndex];
@@ -217,7 +185,7 @@ const renderQuestionSection = () => {
   const ul = document.createElement("ul");
   ul.setAttribute("class", "answer-options");
   console.log(ul.setAttribute);
-
+  // create li1, li2, li3, li4
   const li1 = document.createElement("li");
   li1.setAttribute("class", "answer-option");
   li1.setAttribute("data-option", currentQuestion.answer[0]);
@@ -242,30 +210,18 @@ const renderQuestionSection = () => {
 
   ul.append(li1, li2, li3, li4);
   // append h2 and ul to section
+
   section.append(h2, ul);
-  // append question section to main element
+  // append  section to main element
   mainElement.append(section);
+  // append section to main
+
   // add event listener on question section
   section.addEventListener("click", validateAnswer);
-  // use HTML as guide and build in JS
   // append section to main
-  // add click event listener on #question-section
 };
 
-// const renderGameOver = () => {
-//   timerSection.remove();
-//   // removeQuestionSection();
-//   const gameOverSection = createElement("section");
-//   const formDiv1 = document.createElement("div");
-//   formDiv1.setAttribute("class", "fill-name-input");
-//   formDiv1.textContent = "Score = ";
-//   gameOverSection.append(formDiv1);
-//   mainElement.append(gameOverSection);
-//   // use HTML as guide and build in JS
-//   // append section to main
-
 const renderAlert = () => {
-  // use HTML as guide and build in JS
   const alert = document.createElement("div");
   document.getElementById("answer-option-section").append(alert);
   alert.textContent = "Sorry, wrong answer!";
@@ -302,7 +258,7 @@ const renderForm = () => {
 
   //create label
   const label = document.createElement("label");
-  label.textContent = "Your initials:";
+  label.textContent = "Your initials: ";
 
   // create input
   const input = document.createElement("input");
@@ -342,18 +298,15 @@ const startQuiz = () => {
   console.log("startQuiz");
   // start timer
   startTimer();
-
-  removeStartSection();
   // remove start section
-  // renderTimerSection();
-  // render timer section
+  removeStartSection();
 
-  renderQuestionSection();
   // render question section
+  renderQuestionSection();
 };
 
 // add event listeners
-document.getElementById("start-btn").addEventListener("click", startQuiz);
-window.onload = onLoad();
 // add document on load event listener
 // add start button click event listener
+document.getElementById("start-btn").addEventListener("click", startQuiz);
+window.onload = onLoad();

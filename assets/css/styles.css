@@ -11,11 +11,11 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+/* set default html to 10px */
 html {
   font-size: 10px;
 }
-
+/* body container to ensure that main is twice the size of footer and header */
 .body-container {
   margin: 0;
   line-height: 2;
@@ -24,7 +24,7 @@ html {
   flex-direction: column;
   height: 100vh;
 }
-
+/* header and nav elements */
 .header {
   display: flex;
   flex-direction: row;
@@ -47,7 +47,7 @@ html {
   display: flex;
   align-items: center;
 }
-
+/* pseudoclasses for nav elements  */
 .home:hover {
   background-color: var(--eggshell);
 }
@@ -80,15 +80,17 @@ html {
   flex-direction: row;
 }
 
+/* main elements */
 .main {
   flex-grow: 2;
 }
 
+/* starter section */
 .h1 {
   text-align: center;
   text-transform: capitalize;
 }
-
+/* css for start btn */
 .start-btn-container,
 .start-container {
   display: flex;
@@ -116,7 +118,6 @@ html {
   color: #ffffff;
   padding: 2vh;
   font-size: 1.5rem;
-  overflow: hidden;
   transition: 400ms;
   color: #fff;
   background-color: var(--independence);
@@ -128,6 +129,7 @@ html {
   cursor: pointer;
 }
 
+/* answer options  in quiz */
 .answer-options {
   list-style: none;
   padding-left: 0;
@@ -139,12 +141,15 @@ html {
   text-decoration-style: none;
   background-color: var(--green-sheen);
   margin: 1rem;
+  transition: 400ms;
   width: fit-content;
   text-align: center;
   border-radius: 0.4rem;
   padding: 0.5rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
 }
 
+/* pseudo classed for answer options */
 .answer-option:hover,
 .submitbtn:hover {
   cursor: pointer;
@@ -156,8 +161,16 @@ html {
   background-color: var(--independence);
   color: #ffffff;
   padding: 0.5vh;
+  margin: 1rem;
   font-size: 1.4rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
 }
+
+/* form section when quiz is complete */
+.form-section {
+  margin: 1rem;
+}
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -174,7 +187,7 @@ html {
   text-decoration: none;
   color: var(--independence);
 }
-
+/* media queries for mobile viewport to make it responsive */
 @media screen and (max-width: 576px) {
   .header,
   .nav-container {

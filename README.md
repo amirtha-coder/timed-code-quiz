@@ -1,40 +1,43 @@
 # timed-code-quiz
 
-- Quiz should be timed??
-- Quiz should have multiple choice questions??
-- What is dynamic in JS
-- Stores my high scores??
+## Deployed URL
 
-User Journey
+Click the link [here](https://amirtha-coder.github.io/timed-code-quiz/) to access the webpage.
 
-- Page loads
-- User is presented with Start button
-- User clicks start button
-- A timer starts to count down and you are presented with the first question
-- When you are presented with a question you will have your multiple choice answers
-- When user clicks on answer (li or button) then move to next question
-- When I click on an answer, then the selected answer is validated against the correct answer (how do we store correct answer for a question rendered)
-- If answer is correct go to next question
-- If answer is wrong subtract time from remaining time and go to the next question
-- Game Over Logic
-  - When all questions are answered (track current question)
-    OR
-  - When remaining time reaches 0
-- When you answer all questions stop the timer and record that as your score and render form
+## Description
 
-Form
+To create this timed code quiz I had to used HTML, CSS, Javascript and Web APIs.
 
-- field for initials or full name
-- a message stating your score
-- submit the form
+1. When the user loads the quiz I wanted them to have a responsive webpage that will work on different screens
+2. When the user loads the screen they should be presented with nav bar, start section and footer.
+3. Via javascript I removed the start section so that the user can be presented with question.
+4. I set event.currentTarget = correct answer and event.target = answer for each question.
+5. I used if or else conditions to then if correct answer allow user to continue or display alert.
+6. When quiz timer = 0 or the user finishes the quiz a form should displayed.
+7. The quiz form should contain score which is equivalent to the time at finish and should create initials with an input box alongside.
+8. The user should be displayed the two different alerts for correct and wrong input values when they click submit.
+9. Local storage stores the values and these values should be displayed on high scores webpage.
+10. The clear highscores button should remove high scores from local storage.
 
-On form submission
+## Screenshots
 
-- store your score in local storage
+### Code quiz start![start](./assets/images/codequizhome.png)
 
-High Scores Page
+### Code quiz question![question](./assets/images/codequizquestions.png)
 
-- When page loads read all the scores from local storage
-- Present the scores as a list with initials or full name and the score
-- Also render 2 buttons: Go Back which takes you back to index.html; Clear highscores which clears your local storage
-- When you load the page with no highscores render a message stating "No scores"
+### Code quiz highscores page![highscores](./assets/images/codequizshighscores.png)
+
+## Technologies
+
+- html
+- css
+- coolers
+- javascript
+- git
+
+## Previous projects
+
+- #### Project 1: semantic HTML and adding CSS to refactor the webpage for a marketing agency. Click the link [here](https://winner-am1.github.io/semantic_html_refactor/) to access the webpage.
+- #### Project 2: My professional portfolio created using HTML and CSS.Click the link [here](https://amirtha-coder.github.io/amirtha-portfolio/) to access the webpage.
+- #### Project 3: My random password generator created via javascript. Click the link [here](https://amirtha-coder.github.io/random-password-generator/) to access the webpage.
+- ..._PENDING_...

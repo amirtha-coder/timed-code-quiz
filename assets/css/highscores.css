@@ -82,6 +82,7 @@ html {
   cursor: pointer;
 }
 
+/* scores and initials from LS displayed as a row  */
 .ul-container {
   display: flex;
   flex-direction: row;
@@ -102,4 +103,12 @@ html {
 .link-text {
   text-decoration: none;
   color: var(--independence);
+}
+/* media queries for mobile viewport to make it responsive */
+@media screen and (max-width: 576px) {
+  .header,
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
