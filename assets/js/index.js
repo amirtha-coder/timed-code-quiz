@@ -12,6 +12,8 @@ const mainElement = document.getElementById("main");
 // target the timer section
 const timerSection = document.getElementById("timerSection");
 
+const sectionForm = document.createElement("section");
+
 let questionIndex = 0;
 
 // object array questions
@@ -81,7 +83,6 @@ const startTimer = () => {
       removeQuestionSection();
       renderForm();
       clearInterval(timer);
-      console.log("time working");
     }
     // decrement timer value
     // if quizComplete is true then stop timer
@@ -103,7 +104,6 @@ const onLoad = () => {
 };
 
 const removeStartSection = () => {
-  console.log("remove start section");
   startSection.remove();
 };
 
@@ -113,12 +113,9 @@ const validateAnswer = (event) => {
   const target = event.target;
   const currentTarget = (event.currentTarget = currentQuestion.correctAnswer);
 
-  console.log(currentTarget);
-
   // get the correct answer for question
   if (target.tagName === "LI") {
     const value = target.getAttribute("data-option");
-    console.log(value);
 
     // compare the 2 answers
     if (value !== currentTarget) {
@@ -128,7 +125,6 @@ const validateAnswer = (event) => {
       // if incorrect render error alert with message and status
       // set timeout for 500ms and then go to next question
       myTimeout = setTimeout(5000);
-      console.log("incorrect answer");
     } else {
       if (questionIndex < questions.length - 1) {
         // if question is not last question then increment question index and render next question
@@ -148,7 +144,6 @@ const validateAnswer = (event) => {
 };
 
 const handleFormSubmit = (event) => {
-  console.log("form button");
   event.preventDefault();
 
   // get value from input
@@ -165,7 +160,10 @@ const handleFormSubmit = (event) => {
     highScores.push(highScore);
 
     localStorage.setItem("highScores", JSON.stringify(highScores));
-    alert("click highscores button to view leaderboard");
+    sectionForm.remove();
+    renderSuccess();
+
+    console.log("input removed");
   } else {
     alert("please write your initials to view high score");
     // check if empty then render error alert with message and status
@@ -184,13 +182,12 @@ const renderQuestionSection = () => {
   // create ul
   const ul = document.createElement("ul");
   ul.setAttribute("class", "answer-options");
-  console.log(ul.setAttribute);
+
   // create li1, li2, li3, li4
   const li1 = document.createElement("li");
   li1.setAttribute("class", "answer-option");
   li1.setAttribute("data-option", currentQuestion.answer[0]);
   li1.textContent = currentQuestion.answer[0];
-  console.log(currentQuestion.answer);
 
   const li2 = document.createElement("li");
   li2.setAttribute("class", "answer-option");
@@ -206,7 +203,6 @@ const renderQuestionSection = () => {
   li4.setAttribute("class", "answer-option");
   li4.setAttribute("data-option", currentQuestion.answer[3]);
   li4.textContent = currentQuestion.answer[3];
-  console.log("please work");
 
   ul.append(li1, li2, li3, li4);
   // append h2 and ul to section
@@ -229,15 +225,21 @@ const renderAlert = () => {
   alert.setAttribute("id", "alert");
   // append div to #question-section
 };
+const renderSuccess = () => {
+  const success = document.createElement("div");
+  mainElement.append(success);
+  success.textContent =
+    " ✅ It was a success! Click button below to view highscores";
+  success.setAttribute("class", "success");
+};
 
 const renderForm = () => {
   // use HTML as guide and build in JS
-  console.log("form");
+
   //create section
   if (document.getElementById("form-section")) {
     return;
   }
-  const sectionForm = document.createElement("section");
   sectionForm.setAttribute("class", "form-section");
   sectionForm.setAttribute("id", "form-section");
   // header
@@ -295,7 +297,6 @@ const removeQuestionSection = () => {
 };
 
 const startQuiz = () => {
-  console.log("startQuiz");
   // start timer
   startTimer();
   // remove start section

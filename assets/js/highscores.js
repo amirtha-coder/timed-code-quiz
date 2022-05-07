@@ -18,14 +18,12 @@ const valuesFromLs = () => {
       highScores[i].initials +
       " score = " +
       highScores[i].score;
-    console.log("working");
 
     // append div to main and append ul to values
     // append li to ul
     ul.append(li1);
     values.append(ul);
     mainElement.append(values);
-    console.log(li1);
   }
 };
 // go back to previous webpage
