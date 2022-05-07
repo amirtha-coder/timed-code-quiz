@@ -14,6 +14,8 @@ const timerSection = document.getElementById("timerSection");
 
 const sectionForm = document.createElement("section");
 
+const alert1 = document.createElement("div");
+
 let questionIndex = 0;
 
 // object array questions
@@ -131,7 +133,7 @@ const validateAnswer = (event) => {
         removeQuestionSection();
         questionIndex += 1;
         renderQuestionSection();
-        document.getElementById("alert").remove();
+        alert1.remove();
         setTimeout(5000);
       } else {
         // if question is last question set quizComplete to true and then render form
@@ -218,11 +220,10 @@ const renderQuestionSection = () => {
 };
 
 const renderAlert = () => {
-  const alert = document.createElement("div");
-  document.getElementById("answer-option-section").append(alert);
-  alert.textContent = "Sorry, wrong answer!";
-  alert.setAttribute("class", "alert");
-  alert.setAttribute("id", "alert");
+  document.getElementById("answer-option-section").append(alert1);
+  alert1.textContent = "Sorry, wrong answer!";
+  alert1.setAttribute("class", "alert");
+  alert1.setAttribute("id", "alert");
   // append div to #question-section
 };
 const renderSuccess = () => {
@@ -231,6 +232,16 @@ const renderSuccess = () => {
   success.textContent =
     " ✅ It was a success! Click button below to view highscores";
   success.setAttribute("class", "success");
+  const viewHighScores = document.createElement("div");
+  viewHighScores.setAttribute("class", "highscoresEnd");
+  const highScoreLink = document.createElement("a");
+  highScoreLink.append(document.getElementById("highscores"));
+  console.log("hello");
+  viewHighScores.append(highScoreLink);
+  mainElement.append(viewHighScores);
+  // success.append(document.getElementById("highscores"));
+
+  mainElement.append(viewHighScores);
 };
 
 const renderForm = () => {

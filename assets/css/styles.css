@@ -193,6 +193,10 @@ html {
   text-decoration: none;
   color: var(--independence);
 }
+
+.highscoresEnd {
+  text-align: center;
+}
 /* media queries for mobile viewport to make it responsive */
 @media screen and (max-width: 576px) {
   .header,
