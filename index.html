@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <title>Code Quiz</title>
+  </head>
+  <body class="body-container">
+    <header class="header">
+      <nav class="nav-container">
+        <a href="./index.html" class="home" id="home">
+          <img src="./assets/images/logo.png" alt="quiz" class="logo-img" />
+        </a>
+        <a href="./highscores.html" class="highscores" id="highscores">highscores</a>
+      </nav>
+      <section class="timer"id=timerSection>
+          <div id="timerDiv">Time:<span id="timer"> </span></div>
+        </section>
+    </header>
+    <main class="main" id="main">
+      <section id="start-section">
+        <h1 class="h1">Welcome to guess the coding acronym quiz</h1>
+        <div class="start-container">
+          <h2>Rules of the game</h2>
+          <div class="start-item">
+            <ul>
+              <li>Your initial score is 50 which is the timer value </li>
+              <li>If questions are wrong 5s is deducted from the timer and your score.</li>
+              <li>Your score is the time at which you finish.</li>
+              <li>Save score with initials to view on leaderboard</li>
+              <li>The quicker you finish the greater the score and the closer you are to being a champion coder! 🏆 </li>
+            </ul>
+          </div>
+          <div class="start-btn-container">
+            <button class="start-btn" id="start-btn">Click to Start</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <h4>&copy amirtha-coder</h4>
+      <a class="link-text" href=https://github.com/amirtha-coder a target=”_blank”> Click to visit github pages<img class="githubicon" src="./assets/images/githubicon.png" ></a>
+      <script src="./assets/js/index.js"></script>
+    </footer>
+  </body>
+</html>

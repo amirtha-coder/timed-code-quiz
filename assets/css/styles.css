@@ -1,0 +1,207 @@
+:root {
+  /* CSS HEX */
+  --eggshell: #f4f1deff;
+  --terra-cotta: #e07a5fff;
+  --independence: #3d405bff;
+  --green-sheen: #81b29aff;
+  --deep-champagne: #f2cc8fff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* set default html to 10px */
+html {
+  font-size: 10px;
+}
+/* body container to ensure that main is twice the size of footer and header */
+.body-container {
+  margin: 0;
+  line-height: 2;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+/* header and nav elements */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--independence);
+  margin: 1vh;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 1.5);
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--independence);
+}
+
+.home {
+  display: flex;
+  align-items: center;
+}
+/* pseudoclasses for nav elements  */
+.home:hover {
+  background-color: var(--eggshell);
+}
+
+.highscores:hover {
+  background-color: var(--eggshell);
+  color: var(--independence);
+}
+
+.logo-img {
+  width: 6.4rem;
+  height: 6.4rem;
+  object-fit: contain;
+}
+
+.highscores {
+  text-decoration: none;
+  color: var(--eggshell);
+  background-color: var(--green-sheen);
+  border-radius: 40rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
+}
+
+.timer {
+  color: var(--eggshell);
+  background-color: var(--terra-cotta);
+  display: flex;
+  flex-direction: row;
+}
+
+/* main elements */
+.main {
+  flex-grow: 2;
+}
+
+/* starter section */
+.h1 {
+  text-align: center;
+  text-transform: capitalize;
+}
+/* css for start btn */
+.start-btn-container,
+.start-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-container ul {
+  padding-left: 0;
+}
+.start-container li {
+  text-align: center;
+  list-style: none;
+}
+
+.start-btn {
+  text-decoration-style: none;
+  background-color: var(--independence);
+  color: #ffffff;
+  padding: 2vh;
+  font-size: 1.5rem;
+  transition: 400ms;
+  color: #fff;
+  background-color: var(--independence);
+  outline: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 1);
+}
+.start-btn:hover {
+  cursor: pointer;
+}
+
+/* answer options  in quiz */
+.answer-options {
+  list-style: none;
+  padding-left: 0;
+  margin: 0px;
+}
+
+.answer-option {
+  list-style: none;
+  text-decoration-style: none;
+  background-color: var(--green-sheen);
+  margin: 1rem;
+  transition: 400ms;
+  width: fit-content;
+  text-align: center;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+}
+
+/* pseudo classed for answer options */
+.answer-option:hover,
+.submitbtn:hover {
+  cursor: pointer;
+  background-color: var(--terra-cotta);
+}
+
+.submitbtn {
+  text-decoration-style: none;
+  background-color: var(--independence);
+  color: #ffffff;
+  padding: 0.5vh;
+  margin: 1rem;
+  font-size: 1.4rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+}
+
+/* form section when quiz is complete */
+.form-section {
+  margin: 1rem;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.githubicon {
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+}
+.success {
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  background-color: var(--eggshell);
+}
+
+.link-text {
+  text-decoration: none;
+  color: var(--independence);
+}
+
+.highscoresEnd {
+  text-align: center;
+}
+/* media queries for mobile viewport to make it responsive */
+@media screen and (max-width: 576px) {
+  .header,
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
